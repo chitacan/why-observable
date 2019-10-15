@@ -1,0 +1,271 @@
+import myTheme from './theme'
+
+export const theme = myTheme
+
+# Why Observable?
+
+<small>Observable을 개발에 사용하려는 이유 (+ intro)</small>
+<br/>
+
+<a href="https://chitacan.io" target="_blank">@chitacan</a>
+
+---
+
+## 시작
+
+websocket API 를 만든 후, 클라이언트가 잘 이해하고 사용할 수 있는지 어떻게 확인할 수 있을까?
+
+* REST API 라면, [paw](https://paw.cloud) 또는 [postman](https://www.getpostman.com) 과 같은 도구들을 사용해 머릿속에서나마 클라이언트 개발자가 되어볼 수 있음
+* 프론트개발자 시절엔 테스트 UI 가 [필요하면 만들어 버렸음](https://santatoeic.com/kit)
+* 하지만 서버를 개발하다보디 마땅한 UI 가 없는 현실...
+
+---
+
+## 없으면 만들어 보자!!
+
+* 처음엔 간단한 elixir module 만들어 두고, iex 쉘을 통해 함수를 실행하면서 테스트
+  * 매번 함수를 직접 타이핑하는게 너무 귀찮...
+* [phoneix.js](https://www.npmjs.com/package/phoenix) 를 사용할 수 있는 간단한 html 페이지를 만들어서 테스트
+  * npm 모듈을 가져다 쓰기 너무 어려움.
+  * 클릭 이벤트 하나도 밑바닥부터 만들어야 함
+* react 를 사용할 수 있는 [codesandbox](https://codesandbox.io) 로 테스트
+  * 이 간단한 페이지를 위해서 react 컴포넌트를 쓴다고?
+
+---
+
+## Observable 을 사용해보면 어떨까??
+
+---
+
+## 생각보다 괜찮은데??
+
+* 간단한 UI 는 쉽게 만들 수 있음
+* markdown 기반이라 필요한 내용은 코드와 함께 문서화
+* npm 모듈 (전부는 아니지만) 사용 가능
+* 독특한 비동기 처리는 websocket 과도 잘 어울림
+
+---
+
+## 테스트에 이렇게 까지 고민하는 이유는??
+
+---
+
+## 개발 과정을 생각해 봅시다.
+
+<svg width="700" height="400">
+<line x1="100" y1="200" x2="600" y2="200" stroke="black" strokeWidth="3"/>
+<text x="90" y="200" dy="11" textAnchor="end" style={{fontSize: '25px'}}>개발 시작</text>
+<text x="610" y="200" dy="11" textAnchor="start" style={{fontSize: '25px'}}>배포</text>
+
+<line x1="300" y1="190" x2="300" y2="210" stroke="white" strokeWidth="6"/>
+<line x1="300" y1="190" x2="300" y2="210" stroke="black" strokeWidth="3"/>
+<text x="300" y="240" textAnchor="middle" style={{fontSize: '20px'}}>API 개발</text>
+
+<line x1="450" y1="190" x2="450" y2="210" stroke="white" strokeWidth="6"/>
+<line x1="450" y1="190" x2="450" y2="210" stroke="black" strokeWidth="3"/>
+<text x="450" y="240" textAnchor="middle" style={{fontSize: '20px'}}>UI 개발</text>
+</svg>
+
+---
+
+## 개발 과정을 생각해 봅시다.
+
+<svg width="700" height="400">
+<line x1="100" y1="200" x2="600" y2="200" stroke="black" strokeWidth="3"/>
+<text x="90" y="200" dy="11" textAnchor="end" style={{fontSize: '25px'}}>개발 시작</text>
+<text x="610" y="200" dy="11" textAnchor="start" style={{fontSize: '25px'}}>배포</text>
+
+<line x1="300" y1="190" x2="300" y2="210" stroke="white" strokeWidth="6"/>
+<line x1="300" y1="190" x2="300" y2="210" stroke="black" strokeWidth="3"/>
+<text x="300" y="240" textAnchor="middle" style={{fontSize: '20px'}}>API 개발</text>
+
+<line x1="450" y1="190" x2="450" y2="210" stroke="white" strokeWidth="6"/>
+<line x1="450" y1="190" x2="450" y2="210" stroke="black" strokeWidth="3"/>
+<text x="450" y="240" textAnchor="middle" style={{fontSize: '20px'}}>UI 개발</text>
+
+<circle cx="490" cy="200" r="10" fill="white"/>
+<circle cx="490" cy="200" r="8" fill="tomato"/>
+<text x="490" y="170" textAnchor="middle" style={{fontSize: '20px'}} fill="orangered">테스트 가능한 시점</text>
+</svg>
+
+---
+
+## 남은 기간도 얼마 없는데...
+
+<svg width="700" height="200">
+<line x1="100" y1="100" x2="600" y2="100" stroke="black" strokeWidth="3"/>
+<text x="90" y="100" dy="11" textAnchor="end" style={{fontSize: '25px'}}>개발 시작</text>
+<text x="610" y="100" dy="11" textAnchor="start" style={{fontSize: '25px'}}>배포</text>
+
+
+<line x1="300" y1="90" x2="300" y2="110" stroke="white" strokeWidth="6"/>
+<line x1="300" y1="90" x2="300" y2="110" stroke="black" strokeWidth="3"/>
+<text x="300" y="140" textAnchor="middle" style={{fontSize: '20px'}}>API 개발</text>
+
+<line x1="450" y1="90" x2="450" y2="110" stroke="white" strokeWidth="6"/>
+<line x1="450" y1="90" x2="450" y2="110" stroke="black" strokeWidth="3"/>
+<text x="450" y="140" textAnchor="middle" style={{fontSize: '20px'}}>UI 개발</text>
+
+<circle cx="490" cy="100" r="10" fill="white"/>
+<circle cx="490" cy="100" r="8" fill="tomato"/>
+</svg>
+
+* 이 API 로는 만들 수 없는 UI 에요. API 를 바꿔주세요.
+* API 를 바꾸긴 어려워요. 디자인을 바꿔주세요.
+
+---
+
+<h4 style={{fontStyle: 'italic', fontWeight: 400, fontFamily: 'Noto Serif KR, serif', textAlign: 'center', lineHeight: 2}}>"우리는 배포하기 직전에 우리가 만든 기능에 대해 제일 잘 알게된다."</h4>
+
+<small style={{fontStyle: 'italic', fontWeight: 400, fontFamily: 'Noto Serif KR, serif'}}>- ??? -</small>
+
+---
+
+## 테스트 가능한 시점을 앞당길 수 있을까?
+
+<svg width="700" height="400">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth" viewBox="0 0 16 16">
+      <path d="M0,0 L0,6 L9,3 z" fill="tomato" />
+    </marker>
+  </defs>
+<line x1="100" y1="200" x2="600" y2="200" stroke="black" strokeWidth="3"/>
+<text x="90" y="200" dy="11" textAnchor="end" style={{fontSize: '25px'}}>개발 시작</text>
+<text x="610" y="200" dy="11" textAnchor="start" style={{fontSize: '25px'}}>배포</text>
+
+<circle cx="490" cy="200" r="10" fill="white"/>
+<circle cx="490" cy="200" r="8" fill="tomato"/>
+<text x="490" y="170" textAnchor="middle" style={{fontSize: '20px'}} fill="orangered">테스트 가능한 시점</text>
+
+<line x1="475" y1="200" x2="300" y2="200" stroke="tomato" strokeWidth="6" markerEnd="url(#arrow)"/>
+</svg>
+
+---
+
+## 테스트 UI 를 만들자!!
+
+<svg width="700" height="400">
+<line x1="100" y1="200" x2="600" y2="200" stroke="black" strokeWidth="3"/>
+<text x="90" y="200" dy="11" textAnchor="end" style={{fontSize: '25px'}}>개발 시작</text>
+<text x="610" y="200" dy="11" textAnchor="start" style={{fontSize: '25px'}}>배포</text>
+
+<circle cx="270" cy="200" r="10" fill="white"/>
+<circle cx="270" cy="200" r="8" fill="skyblue"/>
+<text x="270" y="170" textAnchor="end" style={{fontSize: '20px'}} fill="lightskyblue">테스트 UI</text>
+
+<line x1="300" y1="190" x2="300" y2="210" stroke="white" strokeWidth="6"/>
+<line x1="300" y1="190" x2="300" y2="210" stroke="black" strokeWidth="3"/>
+<text x="300" y="240" textAnchor="middle" style={{fontSize: '20px'}}>API 개발</text>
+
+<line x1="450" y1="190" x2="450" y2="210" stroke="white" strokeWidth="6"/>
+<line x1="450" y1="190" x2="450" y2="210" stroke="black" strokeWidth="3"/>
+<text x="450" y="240" textAnchor="middle" style={{fontSize: '20px'}}>UI 개발</text>
+
+<circle cx="330" cy="200" r="10" fill="white"/>
+<circle cx="330" cy="200" r="8" fill="tomato"/>
+<text x="330" y="170" textAnchor="start" style={{fontSize: '20px'}} fill="orangered">테스트 가능한 시점</text>
+
+<circle cx="490" cy="200" r="10" fill="white"/>
+<circle cx="490" cy="200" r="8" fill="white" stroke="tomato" strokeWidth="3" strokeDasharray="5 5"/>
+</svg>
+
+---
+
+## 테스트 UI 의 조건
+
+<svg width="700" height="200">
+<line x1="100" y1="100" x2="600" y2="100" stroke="black" strokeWidth="3"/>
+<text x="90" y="100" dy="11" textAnchor="end" style={{fontSize: '25px'}}>개발 시작</text>
+<text x="610" y="100" dy="11" textAnchor="start" style={{fontSize: '25px'}}>배포</text>
+
+<circle cx="270" cy="100" r="10" fill="white"/>
+<circle cx="270" cy="100" r="8" fill="skyblue"/>
+<text x="270" y="70" textAnchor="end" style={{fontSize: '20px'}} fill="lightskyblue">테스트 UI</text>
+
+<line x1="300" y1="90" x2="300" y2="110" stroke="white" strokeWidth="6"/>
+<line x1="300" y1="90" x2="300" y2="110" stroke="black" strokeWidth="3"/>
+<text x="300" y="140" textAnchor="middle" style={{fontSize: '20px'}}>API 개발</text>
+
+<line x1="450" y1="90" x2="450" y2="110" stroke="white" strokeWidth="6"/>
+<line x1="450" y1="90" x2="450" y2="110" stroke="black" strokeWidth="3"/>
+<text x="450" y="140" textAnchor="middle" style={{fontSize: '20px'}}>UI 개발</text>
+</svg>
+
+* API 개발과 같이 진행되어야 함
+* 빠르게 만들고, 언제든지 버릴 수 있어야 함
+* 결과물을 모든 팀원들이 경험할 수 있어야 함
+
+---
+
+## 배포하기 직전의 상황을 최대한 많이,<br/>반복적으로 체험해 봐야 합니다.
+
+<svg width="700" height="200">
+<line x1="100" y1="100" x2="600" y2="100" stroke="black" strokeWidth="3"/>
+<text x="90" y="100" dy="11" textAnchor="end" style={{fontSize: '25px'}}>개발 시작</text>
+<text x="610" y="100" dy="11" textAnchor="start" style={{fontSize: '25px'}}>배포</text>
+
+<line x1="300" y1="90" x2="300" y2="110" stroke="white" strokeWidth="6"/>
+<line x1="300" y1="90" x2="300" y2="110" stroke="black" strokeWidth="3"/>
+<text x="300" y="140" textAnchor="middle" style={{fontSize: '20px'}}>API 개발</text>
+
+<line x1="450" y1="90" x2="450" y2="110" stroke="white" strokeWidth="6"/>
+<line x1="450" y1="90" x2="450" y2="110" stroke="black" strokeWidth="3"/>
+<text x="450" y="140" textAnchor="middle" style={{fontSize: '20px'}}>UI 개발</text>
+
+<circle cx="330" cy="100" r="10" fill="white"/>
+<circle cx="330" cy="100" r="8" fill="tomato"/>
+
+<circle cx="370" cy="100" r="10" fill="white"/>
+<circle cx="370" cy="100" r="8" fill="tomato"/>
+
+<circle cx="400" cy="100" r="10" fill="white"/>
+<circle cx="400" cy="100" r="8" fill="tomato"/>
+
+<circle cx="490" cy="100" r="10" fill="white"/>
+<circle cx="490" cy="100" r="8" fill="tomato"/>
+
+<circle cx="550" cy="100" r="10" fill="white"/>
+<circle cx="550" cy="100" r="8" fill="tomato"/>
+</svg>
+
+* 이 API 로는 만들 수 없는 UI 네요. API 를 바꿀께요.
+* UI 흐름이 이상하네요. 디자인을 바꿀께요.
+* 배포 직전에야 하던 논의와 고민들을 할 시간이 많아지면, 결국 우리가 만드는 제품을 더 좋게 만들 수 있지 않을까??
+
+---
+
+## Observable features
+
+테스트 UI 를 만드는데 [유용한 기능들](https://observablehq.com/d/516b57c10db09f1a) 을 가지고 있습니다.
+
+* reactive cell
+  * cell 의 순서를 원하는 대로 배치할 수 있음
+  * user input 을 꽤나 손쉽게 처리할 수 있음
+  * 응답이 여러번 오는 websocket 과도 잘 어울림
+* native DOM support
+* npm 모듈 사용 가능
+* 간단한 리뷰 기능
+
+---
+
+## Observable 에서 만든 테스트 UI
+
+* [계좌인증 테스트](https://observablehq.com/d/e97f68014f816a48)
+* [OTP 테스트](https://observablehq.com/d/86128a4ee8d4f08e)
+* 몇번 만들다 보니 반복되는 코드가 보임
+
+---
+
+## daybit API
+
+daybit 의 websocket API 를 빠르게 테스트해 볼 수 있는 함수와 UI 를 구현해둔 [노트북](https://observablehq.com/d/1e97569cd80c58bb?collection=@chainpartners/daybit)
+
+```js
+import {Api} from '1e97569cd80c58bb'
+```
+
+---
+
+# 🤔
+
+테스트 가능한 시점 앞당기기. 정말 의미가 있을까??
